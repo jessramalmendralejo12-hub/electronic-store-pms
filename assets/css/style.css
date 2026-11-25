@@ -1,0 +1,192 @@
+/* ==========================================================
+   TechMart Admin – design system
+   Colors: dark blue (navy), white, light gray
+   ========================================================== */
+:root {
+    --navy: #0b2447;
+    --navy-2: #12326b;
+    --blue: #2f5fb3;
+    --blue-soft: #e8effb;
+    --ink: #1e293b;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --gray-bg: #f1f4f9;
+    --radius: .75rem;
+    --sidebar-width: 256px;
+
+    /* make Bootstrap use our palette everywhere */
+    --bs-primary: #2f5fb3;
+    --bs-primary-rgb: 47, 95, 179;
+    --bs-link-color: #2f5fb3;
+    --bs-link-hover-color: #12326b;
+    --bs-body-color: #334155;
+    --bs-body-font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --bs-border-color: #e2e8f0;
+}
+
+body { background: var(--gray-bg); font-size: .93rem; }
+h1, h2, h3, h4, h5, h6 { color: var(--ink); }
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+    --bs-offcanvas-bg: var(--navy);
+    --bs-offcanvas-color: #fff;
+    --bs-offcanvas-width: var(--sidebar-width);
+    background: linear-gradient(180deg, var(--navy) 0%, #0d2b58 100%);
+}
+@media (min-width: 992px) {
+    /* Bootstrap's .offcanvas-lg resets these on desktop, so we must override them */
+    .sidebar {
+        position: fixed !important; top: 0; bottom: 0; left: 0;
+        width: var(--sidebar-width) !important; height: 100vh !important;
+        background: linear-gradient(180deg, var(--navy) 0%, #0d2b58 100%) !important;
+        z-index: 1030; flex-grow: 0 !important; box-shadow: 2px 0 12px rgba(11, 36, 71, .15);
+    }
+    .main-content { margin-left: var(--sidebar-width); }
+}
+.sidebar .offcanvas-body { flex-grow: 1 !important; overflow-y: auto; }
+
+.sidebar-brand {
+    display: flex; align-items: center; gap: .75rem; padding: 1.3rem 1.4rem;
+    color: #fff; text-decoration: none !important; border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.brand-logo {
+    width: 40px; height: 40px; border-radius: 11px; display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #4c7be0, var(--blue)); font-size: 1.3rem; color: #fff;
+    box-shadow: 0 4px 10px rgba(47, 95, 179, .45);
+}
+.brand-name { font-weight: 700; font-size: 1.1rem; line-height: 1.1; color: #fff; }
+.brand-sub { font-size: .68rem; letter-spacing: 1.2px; text-transform: uppercase; color: #8fb0e8; }
+
+.sidebar-nav { padding: 1rem .9rem; }
+.nav-label {
+    padding: .9rem .8rem .35rem; font-size: .68rem; font-weight: 600;
+    letter-spacing: 1.2px; text-transform: uppercase; color: #7f98c4;
+}
+.sidebar-nav .nav-link {
+    display: flex; align-items: center; gap: .75rem; color: #cbd8f1; font-weight: 500;
+    padding: .65rem .9rem; border-radius: .6rem; margin-bottom: .2rem; text-decoration: none !important;
+    transition: background .15s, color .15s;
+}
+.sidebar-nav .nav-link i { font-size: 1.05rem; opacity: .9; }
+.sidebar-nav .nav-link:hover { background: rgba(255,255,255,.08); color: #fff; }
+.sidebar-nav .nav-link.active { background: var(--blue); color: #fff; box-shadow: 0 4px 12px rgba(47, 95, 179, .4); }
+
+.sidebar-user {
+    display: flex; align-items: center; gap: .75rem; padding: 1rem 1.2rem;
+    border-top: 1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.12);
+}
+.avatar {
+    width: 38px; height: 38px; border-radius: 50%; background: var(--blue-soft); color: var(--navy);
+    display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;
+}
+.sidebar-user .name { color: #fff; font-weight: 600; font-size: .88rem; line-height: 1.2; }
+.sidebar-user .role { color: #8fb0e8; font-size: .75rem; }
+.sidebar-user .logout { margin-left: auto; color: #cbd8f1; font-size: 1.2rem; }
+.sidebar-user .logout:hover { color: #fff; }
+
+/* ---------- Top bar & page header ---------- */
+.topbar {
+    background: #fff; padding: .7rem 1.5rem; border-bottom: 1px solid var(--line);
+    position: sticky; top: 0; z-index: 1020; min-height: 58px;
+}
+.page-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: 1.5rem; }
+.page-header h1 { font-size: 1.55rem; font-weight: 700; margin: 0; letter-spacing: -.3px; }
+.page-header p { margin: .15rem 0 0; color: var(--muted); }
+
+/* ---------- Cards (one style everywhere) ---------- */
+.card { border: 1px solid var(--line) !important; border-radius: var(--radius); box-shadow: 0 1px 3px rgba(15, 23, 42, .04) !important; overflow: hidden; }
+.panel-header {
+    display: flex; align-items: center; justify-content: space-between; gap: .5rem;
+    background: #fff !important; padding: .95rem 1.25rem; font-weight: 600; color: var(--ink);
+    border-bottom: 1px solid var(--line);
+}
+.panel-header > span > i, .panel-header > i { color: var(--blue) !important; margin-right: .4rem; }
+.panel-header a { font-size: .82rem; font-weight: 500; }
+.panel-footer { background: #fafbfd !important; border-top: 1px solid var(--line); padding: .9rem 1.25rem; }
+.card-body { padding: 1.25rem; }
+
+/* ---------- Stat cards ---------- */
+.stat-card { display: block; color: inherit; text-decoration: none !important; transition: transform .15s, box-shadow .15s; height: 100%; }
+.stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15, 23, 42, .08) !important; }
+.stat-card .card-body { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+.stat-label { color: var(--muted); font-size: .82rem; font-weight: 500; }
+.stat-number { font-size: 2rem; font-weight: 700; color: var(--navy); line-height: 1.15; }
+.stat-hint { color: #94a3b8; font-size: .75rem; }
+.stat-icon { width: 50px; height: 50px; border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+.stat-icon.primary { background: #e1ebfb; color: #2f5fb3; }
+.stat-icon.info    { background: #dff4fa; color: #0e8aa8; }
+.stat-icon.success { background: #dcf5e7; color: #178a4c; }
+.stat-icon.warning { background: #fdf1d4; color: #b7791f; }
+.stat-icon.danger  { background: #fde3e3; color: #c53030; }
+
+/* ---------- Tables ---------- */
+.table { margin-bottom: 0; --bs-table-hover-bg: #f6f9fe; }
+.table > :not(caption) > * > * { padding: .8rem 1.1rem; border-bottom-color: var(--line); }
+.table thead th {
+    background: #f8fafc; color: var(--muted); font-size: .72rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .6px; border-bottom: 1px solid var(--line);
+}
+.table tbody tr:last-child > * { border-bottom: 0; }
+
+/* ---------- Status badges (same look on every page) ---------- */
+.status-badge {
+    display: inline-flex; align-items: center; gap: .4rem; font-weight: 600; font-size: .75rem;
+    padding: .35rem .7rem; border-radius: 999px;
+}
+.status-badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.status-success { background: #dcf5e7; color: #157a43; }
+.status-warning { background: #fdf1d4; color: #9a6410; }
+.status-danger  { background: #fde3e3; color: #b42323; }
+.count-badge { background: var(--blue-soft); color: var(--blue); font-weight: 600; padding: .35rem .7rem; border-radius: 999px; }
+
+/* ---------- Buttons ---------- */
+.btn { border-radius: .6rem; font-weight: 500; }
+.btn-primary {
+    --bs-btn-bg: var(--blue); --bs-btn-border-color: var(--blue);
+    --bs-btn-hover-bg: var(--navy-2); --bs-btn-hover-border-color: var(--navy-2);
+    --bs-btn-active-bg: var(--navy); --bs-btn-active-border-color: var(--navy);
+    --bs-btn-disabled-bg: var(--blue); --bs-btn-disabled-border-color: var(--blue);
+}
+.btn-outline-primary {
+    --bs-btn-color: var(--blue); --bs-btn-border-color: #bfd0ef;
+    --bs-btn-hover-bg: var(--blue); --bs-btn-hover-border-color: var(--blue);
+    --bs-btn-active-bg: var(--navy-2); --bs-btn-active-border-color: var(--navy-2);
+}
+.btn-outline-danger { --bs-btn-border-color: #f3c1c1; }
+.btn-light { --bs-btn-bg: #eef2f7; --bs-btn-border-color: #eef2f7; --bs-btn-hover-bg: #e2e8f0; --bs-btn-hover-border-color: #e2e8f0; }
+.btn-sm.btn-outline-primary, .btn-sm.btn-outline-danger { width: 34px; height: 34px; padding: 0; line-height: 32px; }
+.nav-pills { --bs-nav-pills-link-active-bg: var(--blue); --bs-nav-pills-border-radius: 999px; }
+.nav-pills .nav-link { color: var(--muted); font-weight: 500; text-decoration: none !important; background: #fff; border: 1px solid var(--line); margin-right: .4rem; }
+.nav-pills .nav-link.active { color: #fff; border-color: var(--blue); }
+
+/* ---------- Forms ---------- */
+.form-label { font-weight: 500; font-size: .85rem; color: #475569; margin-bottom: .35rem; }
+.form-control, .form-select { border-radius: .6rem; border-color: #d5dde8; padding: .55rem .8rem; }
+.form-control-sm, .input-group-sm > .form-control { padding: .35rem .6rem; }
+.form-control:focus, .form-select:focus { border-color: var(--blue); box-shadow: 0 0 0 .2rem rgba(47, 95, 179, .15); }
+.input-group-text { background: #f8fafc; border-color: #d5dde8; color: var(--muted); }
+
+/* ---------- Alerts & modal ---------- */
+.alert { border: 0; border-radius: .7rem; box-shadow: 0 1px 3px rgba(15, 23, 42, .06); }
+.modal-content { border: 0; border-radius: 1rem; }
+.modal-header, .modal-footer { border-color: var(--line); }
+
+/* ---------- Product images ---------- */
+.product-thumb { width: 46px; height: 46px; object-fit: cover; border-radius: .6rem; border: 1px solid var(--line); background: #fff; }
+.product-thumb.large { width: 72px; height: 72px; flex-shrink: 0; }
+.product-thumb.placeholder { display: flex; align-items: center; justify-content: center; background: #eef2f7; color: #94a3b8; font-size: 1.2rem; }
+
+/* ---------- Login page ---------- */
+.login-page {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem;
+    background: radial-gradient(circle at 20% 20%, #1c4a96 0%, transparent 45%), linear-gradient(135deg, var(--navy), #0d2b58);
+}
+.login-card { width: 100%; max-width: 420px; border-radius: 1.1rem !important; box-shadow: 0 20px 50px rgba(0, 0, 0, .3) !important; }
+.login-logo {
+    width: 64px; height: 64px; margin: 0 auto; border-radius: 18px; color: #fff; font-size: 2rem;
+    background: linear-gradient(135deg, #4c7be0, var(--blue)); display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 18px rgba(47, 95, 179, .4);
+}
